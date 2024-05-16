@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dycesgapxerd"]
+
+[ext_resource type="Script" path="res://Scripts/Levels/Main.cs" id="1_bmbku"]
+[ext_resource type="PackedScene" uid="uid://tnlnp8b3ivkx" path="res://Scenes/Characters/Player/player.tscn" id="2_3wqkv"]
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_bmbku")
+
+[node name="Player" parent="." instance=ExtResource("2_3wqkv")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.18812)
