@@ -1,8 +1,18 @@
 using Godot;
 using System;
 
-public partial class Player : CharacterBody3D {
-    private Vector2 _direction = new();
+public partial class Player : CharacterBody3D
+{
+    [ExportGroup("Required Nodes")]
+    [Export] private AnimationPlayer _animPlayerNode;
+    [Export] private Sprite3D _sprite;
+    
+    private Vector2 _direction;
+
+    public override void _Ready() {
+        GD.Print(_animPlayerNode.Name);
+    }
+    
     public override void _PhysicsProcess(double delta) {
         Velocity = new Vector3(_direction.X, 0, _direction.Y);
         Velocity *= 5;
