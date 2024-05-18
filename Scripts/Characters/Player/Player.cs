@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using DungeonRPG.Scripts.General;
 
 public partial class Player : CharacterBody3D
 {
@@ -10,7 +11,7 @@ public partial class Player : CharacterBody3D
     private Vector2 _direction;
 
     public override void _Ready() {
-        _animPlayerNode.Play("Idle");
+        _animPlayerNode.Play(GameConstants.AnimIdle);
     }
     
     public override void _PhysicsProcess(double delta) {
@@ -21,13 +22,18 @@ public partial class Player : CharacterBody3D
     }
     
     public override void _Input(InputEvent @event) {
-        _direction = Input.GetVector("MoveLeft", "MoveRight", "MoveForward", "MoveBackward");
+        _direction = Input.GetVector(
+            GameConstants.InputMoveLeft,
+            GameConstants.InputMoveRight,
+            GameConstants.InputMoveForward,
+            GameConstants.InputMoveBackward
+            );
 
         if (_direction == Vector2.Zero) {
-            _animPlayerNode.Play("Idle");
+            _animPlayerNode.Play(GameConstants.AnimIdle);
         }
         else {
-            _animPlayerNode.Play("Move");
+            _animPlayerNode.Play(GameConstants.AnimMove);
         }
     }
 }
