@@ -5,14 +5,10 @@ using DungeonRPG.Scripts.General;
 public partial class Player : CharacterBody3D
 {
     [ExportGroup("Required Nodes")]
-    [Export] private AnimationPlayer _animPlayerNode;
-    [Export] private Sprite3D _spriteNode;
+    [Export] public AnimationPlayer AnimPlayerNode;
+    [Export] public Sprite3D SpriteNode;
     
     private Vector2 _direction;
-
-    public override void _Ready() {
-        _animPlayerNode.Play(GameConstants.AnimIdle);
-    }
     
     public override void _PhysicsProcess(double delta) {
         Velocity = new Vector3(_direction.X, 0, _direction.Y);
@@ -29,13 +25,6 @@ public partial class Player : CharacterBody3D
             GameConstants.InputMoveForward,
             GameConstants.InputMoveBackward
             );
-
-        if (_direction == Vector2.Zero) {
-            _animPlayerNode.Play(GameConstants.AnimIdle);
-        }
-        else {
-            _animPlayerNode.Play(GameConstants.AnimMove);
-        }
     }
 
     private void Flip() {
@@ -46,6 +35,6 @@ public partial class Player : CharacterBody3D
         }
         
         bool isMovingLeft = Velocity.X < 0;
-        _spriteNode.FlipH = isMovingLeft;
+        SpriteNode.FlipH = isMovingLeft;
     }
 }
