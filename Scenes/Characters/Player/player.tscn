@@ -77,7 +77,8 @@ _animPlayerNode = NodePath("AnimationPlayer")
 _spriteNode = NodePath("Sprite3D")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-texture = ExtResource("1_m1n4l")
+texture_filter = 0
+texture = ExtResource("1_w1ydv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
