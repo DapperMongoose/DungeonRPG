@@ -14,7 +14,14 @@ public partial class PlayerMoveState : Node {
     public override void _PhysicsProcess(double delta) {
         if (_characterNode.Direction == Vector2.Zero) {
             _characterNode.StateMachineNode.SwitchState<PlayerIdleState>();
+            return;
         }
+        
+        _characterNode.Velocity = new Vector3(_characterNode.Direction.X, 0, _characterNode.Direction.Y);
+        _characterNode.Velocity *= 5;
+        
+        _characterNode.MoveAndSlide();
+        _characterNode.Flip();
     }
     
     public override void _Notification(int what) {
