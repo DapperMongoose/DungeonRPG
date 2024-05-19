@@ -11,4 +11,5 @@ public class GameConstants {
     public const string InputMoveRight = "MoveRight";
     public const string InputMoveForward = "MoveForward";
     public const string InputMoveBackward = "MoveBackward";
+    public const string InputDash = "Dash";
 }

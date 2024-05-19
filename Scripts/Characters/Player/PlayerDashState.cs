@@ -9,12 +9,6 @@ public partial class PlayerDashState : Node {
         _characterNode = GetOwner<Player>();
         SetPhysicsProcess(false);
     }
-
-    public override void _PhysicsProcess(double delta) {
-        if (_characterNode.Direction != Vector2.Zero) {
-            _characterNode.StateMachineNode.SwitchState<PlayerDashState>();
-        }
-    }
     
     public override void _Notification(int what) {
         base._Notification(what);
