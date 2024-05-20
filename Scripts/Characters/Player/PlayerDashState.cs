@@ -1,44 +1,37 @@
+using DungeonRPG.Scripts.Characters.Player;
 using DungeonRPG.Scripts.General;
 using Godot;
 using System;
 
-public partial class PlayerDashState : Node {
-    private Player _characterNode;
+public partial class PlayerDashState : PlayerState {
     [Export] private Timer _dashTimerNode;
     [Export] private float _speed = 10;
 
     public override void _Ready() {
-        _characterNode = GetOwner<Player>();
+        base._Ready();
         _dashTimerNode.Timeout += HandleDashTimeout;
-        SetPhysicsProcess(false);
-    }
-    
-    public override void _Notification(int what) {
-        base._Notification(what);
-        
-        if (what == 5001) {
-            _characterNode.AnimPlayerNode.Play(GameConstants.AnimDash);
-            SetPhysicsProcess(true);
-            _characterNode.Velocity = new Vector3(_characterNode.Direction.X, 0, _characterNode.Direction.Y);
-
-            if (_characterNode.Velocity == Vector3.Zero) {
-                _characterNode.Velocity = _characterNode.SpriteNode.FlipH ? Vector3.Left : Vector3.Right;
-            }
-            
-            _characterNode.Velocity *= _speed;
-            _dashTimerNode.Start();
-        } else if (what == 5002) {
-            SetPhysicsProcess(false);
-        }
     }
     
     public override void _PhysicsProcess(double delta) {
-        _characterNode.MoveAndSlide();
-        _characterNode.Flip();
+        CharacterNode.MoveAndSlide();
+        CharacterNode.Flip();
     }
 
     private void HandleDashTimeout() {
-        _characterNode.Velocity = Vector3.Zero;
-        _characterNode.StateMachineNode.SwitchState<PlayerIdleState>();
+        CharacterNode.Velocity = Vector3.Zero;
+        CharacterNode.StateMachineNode.SwitchState<PlayerIdleState>();
+    }
+
+    protected override void EnterState() {
+        CharacterNode.AnimPlayerNode.Play(GameConstants.AnimDash);
+        
+        CharacterNode.Velocity = new Vector3(CharacterNode.Direction.X, 0, CharacterNode.Direction.Y);
+
+        if (CharacterNode.Velocity == Vector3.Zero) {
+            CharacterNode.Velocity = CharacterNode.SpriteNode.FlipH ? Vector3.Left : Vector3.Right;
+        }
+        
+        CharacterNode.Velocity *= _speed;
+        _dashTimerNode.Start();
     }
 }
