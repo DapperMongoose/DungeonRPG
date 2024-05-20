@@ -2,7 +2,7 @@ using Godot;
 
 namespace DungeonRPG.Scripts.Characters.Player;
 
-public partial class PlayerState : Node {
+public abstract partial class PlayerState : Node {
     protected global::Player CharacterNode;
     public override void _Ready() {
         CharacterNode = GetOwner<global::Player>();
