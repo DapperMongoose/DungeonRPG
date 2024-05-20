@@ -122,6 +122,7 @@ SpriteNode = NodePath("Sprite3D")
 StateMachineNode = NodePath("StateMachine")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
+pixel_size = 0.0025
 texture_filter = 0
 texture = ExtResource("1_w1ydv")
 
