@@ -1,3 +1,4 @@
+using DungeonRPG.Scripts.General;
 using Godot;
 using System;
 
@@ -6,7 +7,7 @@ public partial class StateMachine : Node {
     [Export] private Node[] _states;
 
     public override void _Ready() {
-        _currentState.Notification(5001);
+        _currentState.Notification(GameConstants.NotificationEnterState);
     }
 
     public void SwitchState<T>() {
@@ -22,9 +23,9 @@ public partial class StateMachine : Node {
             return;
         }
 
-        _currentState.Notification(5002);
+        _currentState.Notification(GameConstants.NotificationExitState);
         _currentState = newState;
-        _currentState.Notification(5001);
+        _currentState.Notification(GameConstants.NotificationEnterState);
 
     }
 }

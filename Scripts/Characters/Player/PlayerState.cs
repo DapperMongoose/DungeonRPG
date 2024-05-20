@@ -1,3 +1,4 @@
+using DungeonRPG.Scripts.General;
 using Godot;
 
 namespace DungeonRPG.Scripts.Characters.Player;
@@ -13,11 +14,11 @@ public abstract partial class PlayerState : Node {
     public override void _Notification(int what) {
         base._Notification(what);
         
-        if (what == 5001) {
+        if (what == GameConstants.NotificationEnterState) {
             EnterState();
             SetPhysicsProcess(true);
             SetProcessInput(true);
-        } else if (what == 5002) {
+        } else if (what == GameConstants.NotificationExitState) {
             SetPhysicsProcess(false);
             SetProcessInput(false);
         }
