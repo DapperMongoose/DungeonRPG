@@ -5,9 +5,9 @@ using DungeonRPG.Scripts.General;
 public partial class Player : CharacterBody3D
 {
     [ExportGroup("Required Nodes")]
-    [Export] public AnimationPlayer AnimPlayerNode;
-    [Export] public Sprite3D SpriteNode;
-    [Export] public StateMachine StateMachineNode;
+    [Export] public AnimationPlayer AnimPlayerNode {get; private set;}
+    [Export] public Sprite3D SpriteNode {get; private set;}
+    [Export] public StateMachine StateMachineNode {get; private set;}
     
     public Vector2 Direction;
     
