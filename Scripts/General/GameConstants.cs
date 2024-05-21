@@ -1,5 +1,3 @@
-namespace DungeonRPG.Scripts.General;
-
 public class GameConstants {
     // Animations
     public const string AnimIdle = "Idle";

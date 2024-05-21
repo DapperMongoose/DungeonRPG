@@ -1,6 +1,5 @@
 using Godot;
 using System;
-using DungeonRPG.Scripts.General;
 
 public partial class Player : Character {
     
