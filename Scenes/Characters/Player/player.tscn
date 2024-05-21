@@ -158,6 +158,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [ExtResource("37_e7on1"), ExtResource("38_t7nkj"), ExtResource("39_6i0sc"), ExtResource("40_8krn6"), ExtResource("41_vn110"), ExtResource("42_jc15q"), ExtResource("43_otsef"), ExtResource("44_lx8il"), ExtResource("45_3hmfa"), ExtResource("46_umbul"), ExtResource("47_dxjqw"), ExtResource("48_15uwj")]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StateMachine/AttackState")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"PerformHit"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_1y24l"]
 resource_name = "Attack2"
@@ -173,6 +187,20 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("49_ply7q"), ExtResource("50_u8jsc"), ExtResource("51_ew7sn"), ExtResource("52_vh1pd"), ExtResource("53_d406s"), ExtResource("54_tp51q"), ExtResource("55_1a8rs"), ExtResource("56_vyqvd"), ExtResource("57_pgwf7"), ExtResource("58_oj6u8"), ExtResource("59_rxsyx"), ExtResource("60_dbd7n")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StateMachine/AttackState")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"PerformHit"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l6b4x"]

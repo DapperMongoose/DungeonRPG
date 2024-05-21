@@ -3,7 +3,7 @@ using System;
 
 public partial class PlayerAttackState : PlayerState {
     [Export] private Timer _comboTimerNode;
-    
+
     private int _comboCounter = 1;
     private int _maxComboCount = 2;
 
@@ -27,4 +27,9 @@ public partial class PlayerAttackState : PlayerState {
         _comboCounter = Mathf.Wrap(_comboCounter, 1, _maxComboCount + 1);
         CharacterNode.StateMachineNode.SwitchState<PlayerIdleState>();
     }
+
+    private void PerformHit() {
+        GD.Print("Perform hit");
+    }
+
 }
