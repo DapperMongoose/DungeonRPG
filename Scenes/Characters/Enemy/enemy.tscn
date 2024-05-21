@@ -1,7 +1,8 @@
-[gd_scene load_steps=107 format=3 uid="uid://dbl8b0hjr14n"]
+[gd_scene load_steps=110 format=3 uid="uid://dbl8b0hjr14n"]
 
 [ext_resource type="Texture2D" uid="uid://dv7lmaowrl7sb" path="res://Assets/Sprites/Characters/Enemy Knight/Move/0_Demons_of_Darkness_Walking_001.png" id="1_bd2rq"]
 [ext_resource type="Texture2D" uid="uid://ckmdpqk242wpv" path="res://Assets/Sprites/Characters/Enemy Knight/Idle/0_Demons_of_Darkness_Idle_016.png" id="1_efpp0"]
+[ext_resource type="Script" path="res://Scripts/Characters/Enemy/Enemy.cs" id="1_yxs5b"]
 [ext_resource type="Texture2D" uid="uid://dqj2kl0ea8l33" path="res://Assets/Sprites/Characters/Enemy Knight/Idle/0_Demons_of_Darkness_Idle_001.png" id="2_1ek6y"]
 [ext_resource type="Texture2D" uid="uid://dp7lximhqnpti" path="res://Assets/Sprites/Characters/Enemy Knight/Idle/0_Demons_of_Darkness_Idle_000.png" id="3_dss24"]
 [ext_resource type="Texture2D" uid="uid://tcoo0vpiliwp" path="res://Assets/Sprites/Characters/Enemy Knight/Idle/0_Demons_of_Darkness_Idle_002.png" id="4_4y35r"]
@@ -99,6 +100,8 @@
 [ext_resource type="Texture2D" uid="uid://cjfqb2u8k8x2a" path="res://Assets/Sprites/Characters/Enemy Knight/Death/smoke-Fx3_15.png" id="97_6owxf"]
 [ext_resource type="Texture2D" uid="uid://oky5tcwxxqga" path="res://Assets/Sprites/Characters/Enemy Knight/Death/smoke-Fx3_16.png" id="98_fbluf"]
 [ext_resource type="Texture2D" uid="uid://cohayelhfla0q" path="res://Assets/Sprites/Characters/Enemy Knight/Death/smoke-Fx3_17.png" id="99_4sm46"]
+[ext_resource type="PackedScene" uid="uid://djxt2qm1fbqaa" path="res://Scenes/Characters/state_machine.tscn" id="100_k42se"]
+[ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyIdleState.cs" id="101_ebask"]
 
 [sub_resource type="Animation" id="Animation_bad4d"]
 resource_name = "Idle"
@@ -207,11 +210,15 @@ _data = {
 radius = 0.513619
 height = 1.63196
 
-[node name="Enemy" type="CharacterBody3D"]
+[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("AnimPlayerNode", "SpriteNode", "StateMachineNode")]
+script = ExtResource("1_yxs5b")
+AnimPlayerNode = NodePath("AnimationPlayer")
+SpriteNode = NodePath("Sprite3D")
+StateMachineNode = NodePath("StateMachine")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-pixel_size = 0.0075
-texture = ExtResource("99_4sm46")
+pixel_size = 0.0025
+texture = ExtResource("67_uwir4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -221,3 +228,10 @@ libraries = {
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0341384, 0.0212583, 0)
 shape = SubResource("CapsuleShape3D_opwip")
+
+[node name="StateMachine" parent="." node_paths=PackedStringArray("_currentState", "_states") instance=ExtResource("100_k42se")]
+_currentState = NodePath("IdleState")
+_states = [NodePath("IdleState")]
+
+[node name="IdleState" type="Node" parent="StateMachine"]
+script = ExtResource("101_ebask")

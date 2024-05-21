@@ -1,4 +1,3 @@
-using DungeonRPG.Scripts.Characters.Player;
 using DungeonRPG.Scripts.General;
 using Godot;
 using System;
