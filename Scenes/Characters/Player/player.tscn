@@ -220,7 +220,7 @@ height = 1.4909
 [sub_resource type="BoxShape3D" id="BoxShape3D_omgfd"]
 size = Vector3(0.5, 0.5, 0.5)
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("AnimPlayerNode", "SpriteNode", "StateMachineNode")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("AnimPlayerNode", "SpriteNode", "StateMachineNode", "HitBoxNode")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0245743, 0.00819182, 0)
 collision_layer = 2
 collision_mask = 5
@@ -231,6 +231,7 @@ _stats = Array[Object]([SubResource("Resource_3qm02"), SubResource("Resource_35k
 AnimPlayerNode = NodePath("AnimationPlayer")
 SpriteNode = NodePath("Sprite3D")
 StateMachineNode = NodePath("StateMachine")
+HitBoxNode = NodePath("Hitbox")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 pixel_size = 0.0025
@@ -273,7 +274,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0409594, 0.0163836, 0)
 shape = SubResource("CapsuleShape3D_fq4ac")
 
 [node name="Hitbox" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.85604, -0.176123, 0)
 collision_layer = 2
 collision_mask = 0
 

@@ -29,6 +29,9 @@ public partial class PlayerAttackState : PlayerState {
     }
 
     private void PerformHit() {
+        Vector3 newPosition = CharacterNode.SpriteNode.FlipH ? Vector3.Left : Vector3.Right;
+        float distanceMultipler = 0.75f;
+        CharacterNode.HitBoxNode.Position = newPosition * distanceMultipler;
         GD.Print("Perform hit");
     }
 
