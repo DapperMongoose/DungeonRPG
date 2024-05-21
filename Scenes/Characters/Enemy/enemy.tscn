@@ -1,9 +1,10 @@
-[gd_scene load_steps=116 format=3 uid="uid://dbl8b0hjr14n"]
+[gd_scene load_steps=119 format=3 uid="uid://dbl8b0hjr14n"]
 
 [ext_resource type="Texture2D" uid="uid://dv7lmaowrl7sb" path="res://Assets/Sprites/Characters/Enemy Knight/Move/0_Demons_of_Darkness_Walking_001.png" id="1_bd2rq"]
 [ext_resource type="Texture2D" uid="uid://ckmdpqk242wpv" path="res://Assets/Sprites/Characters/Enemy Knight/Idle/0_Demons_of_Darkness_Idle_016.png" id="1_efpp0"]
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/Enemy.cs" id="1_yxs5b"]
 [ext_resource type="Texture2D" uid="uid://dqj2kl0ea8l33" path="res://Assets/Sprites/Characters/Enemy Knight/Idle/0_Demons_of_Darkness_Idle_001.png" id="2_1ek6y"]
+[ext_resource type="Script" path="res://Scripts/Resources/StatResource.cs" id="2_tooqu"]
 [ext_resource type="Texture2D" uid="uid://dp7lximhqnpti" path="res://Assets/Sprites/Characters/Enemy Knight/Idle/0_Demons_of_Darkness_Idle_000.png" id="3_dss24"]
 [ext_resource type="Texture2D" uid="uid://tcoo0vpiliwp" path="res://Assets/Sprites/Characters/Enemy Knight/Idle/0_Demons_of_Darkness_Idle_002.png" id="4_4y35r"]
 [ext_resource type="Texture2D" uid="uid://dmwvxfo3wcb2l" path="res://Assets/Sprites/Characters/Enemy Knight/Idle/0_Demons_of_Darkness_Idle_003.png" id="5_4kp2c"]
@@ -106,6 +107,16 @@
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyPatrolState.cs" id="104_stxnt"]
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyChaseState.cs" id="105_41vs7"]
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyAttackState.cs" id="106_4rd1m"]
+
+[sub_resource type="Resource" id="Resource_xnpe1"]
+script = ExtResource("2_tooqu")
+StatType = 0
+StatValue = 20.0
+
+[sub_resource type="Resource" id="Resource_g41ms"]
+script = ExtResource("2_tooqu")
+StatType = 1
+StatValue = 4.0
 
 [sub_resource type="Animation" id="Animation_lieq3"]
 resource_name = "Attack"
@@ -221,9 +232,11 @@ radius = 6.0
 radius = 1.4
 
 [node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("AnimPlayerNode", "SpriteNode", "StateMachineNode", "HurtBoxNode", "AgentNode", "ChaseAreaNode", "AttackAreaNode")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00650024, 0, 0)
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_yxs5b")
+stats = Array[Object]([SubResource("Resource_xnpe1"), SubResource("Resource_g41ms")])
 AnimPlayerNode = NodePath("AnimationPlayer")
 SpriteNode = NodePath("Sprite3D")
 StateMachineNode = NodePath("StateMachine")
