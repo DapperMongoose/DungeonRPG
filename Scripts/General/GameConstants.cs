@@ -11,6 +11,7 @@ public class GameConstants {
     public const string InputMoveForward = "MoveForward";
     public const string InputMoveBackward = "MoveBackward";
     public const string InputDash = "Dash";
+    public const string InputAttack = "Attack";
     
     // Notifications
     public const int NotificationEnterState = 5001;
