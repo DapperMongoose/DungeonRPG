@@ -15,6 +15,7 @@ public partial class StateMachine : Node {
         foreach (Node state in _states) {
             if (state is T) {
                 newState = state;
+                break;
             }
         }
 

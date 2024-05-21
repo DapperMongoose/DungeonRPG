@@ -3,7 +3,7 @@ using Godot;
 public abstract partial class Character : CharacterBody3D {
 
     [Export]
-    private StatResource[] stats;
+    private StatResource[] _stats;
     
     [ExportGroup("Required Nodes")]
     [Export] public AnimationPlayer AnimPlayerNode {get; private set;}
@@ -36,7 +36,17 @@ public abstract partial class Character : CharacterBody3D {
     }
     
     private void HandleHurtBoxEntered(Area3D area) {
-        GD.Print($"{area.Name} hit");
+        StatResource health = GetStatResource(Stat.Health);
+        GD.Print(health.StatValue);
     }
-    
+
+    public StatResource GetStatResource(Stat stat) {
+        foreach (StatResource element in _stats) {
+            if (element.StatType == stat) {
+                return element;
+            }
+        }
+
+        return null;
+    }
 }

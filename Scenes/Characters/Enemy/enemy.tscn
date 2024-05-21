@@ -108,12 +108,12 @@
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyChaseState.cs" id="105_41vs7"]
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyAttackState.cs" id="106_4rd1m"]
 
-[sub_resource type="Resource" id="Resource_xnpe1"]
+[sub_resource type="Resource" id="Resource_6xeyh"]
 script = ExtResource("2_tooqu")
 StatType = 0
 StatValue = 20.0
 
-[sub_resource type="Resource" id="Resource_g41ms"]
+[sub_resource type="Resource" id="Resource_fi5m3"]
 script = ExtResource("2_tooqu")
 StatType = 1
 StatValue = 4.0
@@ -236,7 +236,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00650024, 0, 0)
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_yxs5b")
-stats = Array[Object]([SubResource("Resource_xnpe1"), SubResource("Resource_g41ms")])
+_stats = Array[Object]([SubResource("Resource_6xeyh"), SubResource("Resource_fi5m3")])
 AnimPlayerNode = NodePath("AnimationPlayer")
 SpriteNode = NodePath("Sprite3D")
 StateMachineNode = NodePath("StateMachine")
