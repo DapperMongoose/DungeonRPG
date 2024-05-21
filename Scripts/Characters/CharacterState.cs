@@ -17,11 +17,15 @@ public abstract partial class CharacterState : Node {
             SetPhysicsProcess(true);
             SetProcessInput(true);
         } else if (what == GameConstants.NotificationExitState) {
+            ExitState();
             SetPhysicsProcess(false);
             SetProcessInput(false);
         }
     }
 
     protected virtual void EnterState() {
+    }
+
+    protected virtual void ExitState() {
     }
 }
