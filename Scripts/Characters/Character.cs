@@ -11,6 +11,7 @@ public abstract partial class Character : CharacterBody3D {
     [Export] public StateMachine StateMachineNode {get; private set;}
     [Export] public Area3D HurtBoxNode{ get; private set; }
     [Export] public Area3D HitBoxNode{ get; private set; }
+    [Export] public CollisionShape3D HitBoxShapeNode{ get; private set; }
     
     [ExportGroup("AI Nodes")]
     [Export] public Path3D PathNode{ get; private set;}
@@ -51,5 +52,9 @@ public abstract partial class Character : CharacterBody3D {
         }
 
         return null;
+    }
+
+    public void ToggleHitBox(bool flag) {
+        HitBoxShapeNode.Disabled = flag;
     }
 }

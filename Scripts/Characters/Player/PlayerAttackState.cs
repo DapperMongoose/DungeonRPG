@@ -20,6 +20,7 @@ public partial class PlayerAttackState : PlayerState {
     protected override void ExitState() {
         CharacterNode.AnimPlayerNode.AnimationFinished -= HandleAnimationFinished;
         _comboTimerNode.Start();
+        CharacterNode.ToggleHitBox(true);
     }
 
     private void HandleAnimationFinished(StringName animname) {
@@ -32,7 +33,8 @@ public partial class PlayerAttackState : PlayerState {
         Vector3 newPosition = CharacterNode.SpriteNode.FlipH ? Vector3.Left : Vector3.Right;
         float distanceMultipler = 0.75f;
         CharacterNode.HitBoxNode.Position = newPosition * distanceMultipler;
-        GD.Print("Perform hit");
+        
+        CharacterNode.ToggleHitBox(false);
     }
 
 }
