@@ -1,4 +1,3 @@
-using DungeonRPG.Scripts.General;
 using Godot;
 using System;
 
@@ -16,10 +15,15 @@ public partial class StateMachine : Node {
         foreach (Node state in _states) {
             if (state is T) {
                 newState = state;
+                break;
             }
         }
 
         if (newState == null) {
+            return;
+        }
+
+        if (_currentState is T) {
             return;
         }
 

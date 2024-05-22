@@ -1,10 +1,10 @@
-namespace DungeonRPG.Scripts.General;
-
 public class GameConstants {
     // Animations
     public const string AnimIdle = "Idle";
     public const string AnimMove = "Move";
     public const string AnimDash = "Dash";
+    public const string AnimAttack = "Attack";
+    public const string AnimDeath = "Death";
         
     // Input Actions
     public const string InputMoveLeft = "MoveLeft";
@@ -12,6 +12,7 @@ public class GameConstants {
     public const string InputMoveForward = "MoveForward";
     public const string InputMoveBackward = "MoveBackward";
     public const string InputDash = "Dash";
+    public const string InputAttack = "Attack";
     
     // Notifications
     public const int NotificationEnterState = 5001;

@@ -1,4 +1,3 @@
-using DungeonRPG.Scripts.General;
 using Godot;
 using System;
 
@@ -19,6 +18,8 @@ public partial class PlayerMoveState : PlayerState {
     }
     
     public override void _Input(InputEvent @event) {
+        CheckForAttackInput();
+        
         if (Input.IsActionJustPressed(GameConstants.InputDash)) {
             CharacterNode.StateMachineNode.SwitchState<PlayerDashState>();
         }
