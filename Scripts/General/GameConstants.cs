@@ -4,6 +4,7 @@ public class GameConstants {
     public const string AnimMove = "Move";
     public const string AnimDash = "Dash";
     public const string AnimAttack = "Attack";
+    public const string AnimDeath = "Death";
         
     // Input Actions
     public const string InputMoveLeft = "MoveLeft";

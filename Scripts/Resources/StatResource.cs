@@ -1,8 +1,11 @@
 using Godot;
+using System;
 using System.Runtime.InteropServices;
 
 [GlobalClass]
 public partial class StatResource : Resource {
+
+    public Action OnZero;
     [Export] public Stat StatType { get; private set; }
     
     private float _statValue;
@@ -10,6 +13,10 @@ public partial class StatResource : Resource {
         get => _statValue;
         set {
             _statValue = Mathf.Clamp(value, 0, Mathf.Inf);
+
+            if (_statValue == 0) {
+                OnZero?.Invoke();
+            }
             GD.Print(_statValue);
         }
     }
