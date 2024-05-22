@@ -10,6 +10,7 @@ public partial class StatResource : Resource {
         get => _statValue;
         set {
             _statValue = Mathf.Clamp(value, 0, Mathf.Inf);
+            GD.Print(_statValue);
         }
     }
 

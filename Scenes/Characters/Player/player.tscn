@@ -220,7 +220,7 @@ height = 1.4909
 [sub_resource type="BoxShape3D" id="BoxShape3D_omgfd"]
 size = Vector3(0.5, 0.5, 0.5)
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("AnimPlayerNode", "SpriteNode", "StateMachineNode", "HitBoxNode", "HitBoxShapeNode")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("AnimPlayerNode", "SpriteNode", "StateMachineNode", "HurtBoxNode", "HitBoxNode", "HitBoxShapeNode")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0245743, 0.00819182, 0)
 collision_layer = 2
 collision_mask = 5
@@ -231,6 +231,7 @@ _stats = Array[Object]([SubResource("Resource_3qm02"), SubResource("Resource_35k
 AnimPlayerNode = NodePath("AnimationPlayer")
 SpriteNode = NodePath("Sprite3D")
 StateMachineNode = NodePath("StateMachine")
+HurtBoxNode = NodePath("Hurtbox")
 HitBoxNode = NodePath("Hitbox")
 HitBoxShapeNode = NodePath("Hitbox/CollisionShape3D")
 
@@ -281,3 +282,11 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 shape = SubResource("BoxShape3D_omgfd")
 disabled = true
+
+[node name="Hurtbox" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0430937, 0.0178069, 0)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
+shape = SubResource("CapsuleShape3D_fq4ac")
