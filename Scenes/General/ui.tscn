@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://jnmewe4oybvv"]
+[gd_scene load_steps=18 format=3 uid="uid://jnmewe4oybvv"]
 
 [ext_resource type="Script" path="res://Scripts/UI/UIController.cs" id="1_i1arh"]
 [ext_resource type="Script" path="res://Scripts/UI/UIContainer.cs" id="1_pbiwc"]
@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://bnw4hxtjxsvrt" path="res://Resources/player_health_stat.tres" id="10_52tqp"]
 [ext_resource type="Texture2D" uid="uid://d0ambmqkrpggy" path="res://Assets/Sprites/UI/UI ElementUI 9.png" id="10_al4qx"]
 [ext_resource type="Resource" uid="uid://c7lt4l3oummsg" path="res://Resources/player_strength_stat.tres" id="12_gr0a8"]
+[ext_resource type="Script" path="res://Scripts/UI/EnemyCountLabel.cs" id="14_nadca"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_neni0"]
 texture = ExtResource("3_q8g7i")
@@ -167,3 +168,4 @@ theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("2_0xs6l")
 theme_override_font_sizes/font_size = 28
 text = "---"
+script = ExtResource("14_nadca")
