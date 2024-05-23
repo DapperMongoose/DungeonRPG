@@ -14,5 +14,12 @@ public partial class UIController : Control {
             );
 
         _containers[ContainerType.Start].Visible = true;
+
+        _containers[ContainerType.Start].ButtonNode.Pressed += HandleStartPressed;
+    }
+
+    private void HandleStartPressed() {
+        GetTree().Paused = false;
+        _containers[ContainerType.Start].Visible = false;
     }
 }
