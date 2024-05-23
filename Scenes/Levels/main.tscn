@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://bn4ka0jc8j5fh"]
+[gd_scene load_steps=20 format=3 uid="uid://bn4ka0jc8j5fh"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/Main.cs" id="1_81v5v"]
 [ext_resource type="PackedScene" uid="uid://tnlnp8b3ivkx" path="res://Scenes/Characters/Player/player.tscn" id="2_y1e60"]
 [ext_resource type="MeshLibrary" uid="uid://b8k140rlj2058" path="res://Resources/Tiles.tres" id="3_22gsk"]
 [ext_resource type="PackedScene" uid="uid://dbl8b0hjr14n" path="res://Scenes/Characters/Enemy/enemy.tscn" id="4_ovk02"]
+[ext_resource type="PackedScene" uid="uid://jnmewe4oybvv" path="res://Scenes/General/ui.tscn" id="5_82xyy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k5xcj"]
 size = Vector3(1, 2.74652, 2.1015)
@@ -184,3 +185,5 @@ curve = SubResource("Curve3D_acbkp")
 [node name="Path3D10" type="Path3D" parent="Enemies"]
 transform = Transform3D(-0.986332, 0, -0.164772, 0, 1, 0, 0.164772, 0, -0.986332, 29.3682, 5.49648, -41.7767)
 curve = SubResource("Curve3D_a1dsj")
+
+[node name="UI" parent="." instance=ExtResource("5_82xyy")]
