@@ -1,0 +1,24 @@
+using Godot;
+using System;
+
+public partial class TreasureChest : StaticBody3D {
+    [Export] private Area3D _areaNode;
+    [Export] private Sprite3D _spriteNode;
+    [Export] private RewardResource _reward;
+
+    public override void _Ready() {
+        _areaNode.BodyEntered += (body) => _spriteNode.Visible = true;
+        _areaNode.BodyExited += (body) => _spriteNode.Visible = false;
+    }
+
+    public override void _Input(InputEvent @event) {
+        if (
+            !_areaNode.HasOverlappingBodies() ||
+            !Input.IsActionJustPressed(GameConstants.InputInteract)
+            ) {
+            return;
+        }
+        GD.Print("chest opened");
+    }
+    
+}
