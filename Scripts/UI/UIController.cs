@@ -21,5 +21,7 @@ public partial class UIController : Control {
     private void HandleStartPressed() {
         GetTree().Paused = false;
         _containers[ContainerType.Start].Visible = false;
+        
+        GameEvents.RaiseStartGame();
     }
 }
