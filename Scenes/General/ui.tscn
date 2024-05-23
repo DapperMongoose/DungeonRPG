@@ -1,0 +1,318 @@
+[gd_scene load_steps=25 format=3 uid="uid://jnmewe4oybvv"]
+
+[ext_resource type="Script" path="res://Scripts/UI/UIController.cs" id="1_i1arh"]
+[ext_resource type="Script" path="res://Scripts/UI/UIContainer.cs" id="1_pbiwc"]
+[ext_resource type="Texture2D" uid="uid://dhdg5jc305l63" path="res://Assets/Sprites/UI/UI Element 1.png" id="1_tjilb"]
+[ext_resource type="FontFile" uid="uid://dxwt2ylxjx15x" path="res://Assets/RifficFree-Bold.ttf" id="2_0xs6l"]
+[ext_resource type="Texture2D" uid="uid://b83u7eddmhuyq" path="res://Assets/Sprites/UI/UI Element 2.png" id="3_q8g7i"]
+[ext_resource type="Texture2D" uid="uid://8jxem70450f4" path="res://Assets/Sprites/UI/UI ElementUI 12.png" id="6_hk6ee"]
+[ext_resource type="Texture2D" uid="uid://cn250d1103ar6" path="res://Assets/Sprites/UI/UI ElementUI 6.png" id="7_fgatb"]
+[ext_resource type="Texture2D" uid="uid://ni5i1erae2j5" path="res://Assets/Sprites/UI/UI ElementUI 7.png" id="8_r0e0m"]
+[ext_resource type="Texture2D" uid="uid://eile44374d87" path="res://Assets/Sprites/UI/UI ElementUI 8.png" id="9_ejljg"]
+[ext_resource type="Script" path="res://Scripts/UI/StatLabel.cs" id="9_wo757"]
+[ext_resource type="Resource" uid="uid://bnw4hxtjxsvrt" path="res://Resources/player_health_stat.tres" id="10_52tqp"]
+[ext_resource type="Texture2D" uid="uid://d0ambmqkrpggy" path="res://Assets/Sprites/UI/UI ElementUI 9.png" id="10_al4qx"]
+[ext_resource type="Resource" uid="uid://c7lt4l3oummsg" path="res://Resources/player_strength_stat.tres" id="12_gr0a8"]
+[ext_resource type="Script" path="res://Scripts/UI/EnemyCountLabel.cs" id="14_nadca"]
+[ext_resource type="Texture2D" uid="uid://b4m77oci3008m" path="res://Assets/Sprites/UI/UI Element 3.png" id="15_dsm82"]
+[ext_resource type="Texture2D" uid="uid://1ofngiu4qlnt" path="res://Assets/Sprites/UI/UI ElementUI 10.png" id="16_qnkvy"]
+[ext_resource type="Texture2D" uid="uid://ctvlitrxapkgx" path="res://Assets/Sprites/UI/UI ElementUI 11.png" id="17_ahjah"]
+[ext_resource type="Texture2D" uid="uid://tj5yg1hdjqw2" path="res://Assets/Sprites/UI/UI Element 5.png" id="18_mmdwu"]
+[ext_resource type="Texture2D" uid="uid://d13d663v4puda" path="res://Assets/Sprites/UI/UI Element 4.png" id="19_vw82n"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_neni0"]
+texture = ExtResource("3_q8g7i")
+expand_margin_left = 48.0
+expand_margin_top = 8.0
+expand_margin_right = 48.0
+expand_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ddlkh"]
+texture = ExtResource("6_hk6ee")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i87j8"]
+texture = ExtResource("7_fgatb")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2cijk"]
+texture = ExtResource("15_dsm82")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4gqnt"]
+texture = ExtResource("19_vw82n")
+expand_margin_left = 72.0
+expand_margin_top = 16.0
+expand_margin_right = 72.0
+expand_margin_bottom = 22.0
+
+[node name="UI" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i1arh")
+
+[node name="Start" type="VBoxContainer" parent="." node_paths=PackedStringArray("ButtonNode")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.5
+offset_top = -109.5
+offset_right = 260.5
+offset_bottom = 109.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pbiwc")
+ButtonNode = NodePath("Button")
+
+[node name="Title" type="TextureRect" parent="Start"]
+layout_mode = 2
+texture = ExtResource("1_tjilb")
+
+[node name="Button" type="Button" parent="Start"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_0xs6l")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxTexture_neni0")
+theme_override_styles/hover = SubResource("StyleBoxTexture_neni0")
+theme_override_styles/focus = SubResource("StyleBoxTexture_neni0")
+text = "Start"
+
+[node name="Stats" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 232.0
+offset_bottom = 272.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_ddlkh")
+script = ExtResource("1_pbiwc")
+Container = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="Stats"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Stats/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Health" type="Panel" parent="Stats/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_i87j8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Stats/MarginContainer/VBoxContainer/Health"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 4.0
+offset_right = 76.0
+offset_bottom = 44.0
+theme_override_constants/separation = 20
+
+[node name="Icon" type="TextureRect" parent="Stats/MarginContainer/VBoxContainer/Health/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("8_r0e0m")
+
+[node name="Label" type="Label" parent="Stats/MarginContainer/VBoxContainer/Health/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_0xs6l")
+theme_override_font_sizes/font_size = 28
+text = "---"
+script = ExtResource("9_wo757")
+StatResource = ExtResource("10_52tqp")
+
+[node name="Strength" type="Panel" parent="Stats/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_i87j8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Stats/MarginContainer/VBoxContainer/Strength"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 4.0
+offset_right = 76.0
+offset_bottom = 44.0
+theme_override_constants/separation = 15
+
+[node name="Icon" type="TextureRect" parent="Stats/MarginContainer/VBoxContainer/Strength/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("9_ejljg")
+
+[node name="Label" type="Label" parent="Stats/MarginContainer/VBoxContainer/Strength/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_0xs6l")
+theme_override_font_sizes/font_size = 28
+text = "---"
+script = ExtResource("9_wo757")
+StatResource = ExtResource("12_gr0a8")
+
+[node name="EnemyCount" type="Panel" parent="Stats/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_i87j8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Stats/MarginContainer/VBoxContainer/EnemyCount"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 4.0
+offset_right = 76.0
+offset_bottom = 44.0
+theme_override_constants/separation = 20
+
+[node name="Icon" type="TextureRect" parent="Stats/MarginContainer/VBoxContainer/EnemyCount/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("10_al4qx")
+
+[node name="Label" type="Label" parent="Stats/MarginContainer/VBoxContainer/EnemyCount/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_0xs6l")
+theme_override_font_sizes/font_size = 28
+text = "---"
+script = ExtResource("14_nadca")
+
+[node name="Defeat" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -260.0
+offset_right = 260.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_2cijk")
+script = ExtResource("1_pbiwc")
+Container = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Defeat"]
+layout_mode = 2
+theme_override_constants/margin_top = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Defeat/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Label" type="Label" parent="Defeat/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_0xs6l")
+theme_override_font_sizes/font_size = 48
+text = "DEFEAT"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Defeat/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("16_qnkvy")
+
+[node name="Victory" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -260.0
+offset_right = 260.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_2cijk")
+script = ExtResource("1_pbiwc")
+Container = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Victory"]
+layout_mode = 2
+theme_override_constants/margin_top = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Victory/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Label" type="Label" parent="Victory/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_0xs6l")
+theme_override_font_sizes/font_size = 48
+text = "VICTORY"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Victory/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("17_ahjah")
+
+[node name="Pause" type="PanelContainer" parent="." node_paths=PackedStringArray("ButtonNode")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -260.0
+offset_right = 260.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_2cijk")
+script = ExtResource("1_pbiwc")
+Container = 1
+ButtonNode = NodePath("MarginContainer/VBoxContainer/Button")
+
+[node name="MarginContainer" type="MarginContainer" parent="Pause"]
+layout_mode = 2
+theme_override_constants/margin_top = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pause/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Label" type="Label" parent="Pause/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_0xs6l")
+theme_override_font_sizes/font_size = 48
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Pause/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("18_mmdwu")
+
+[node name="Button" type="Button" parent="Pause/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_0xs6l")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxTexture_4gqnt")
+theme_override_styles/hover = SubResource("StyleBoxTexture_4gqnt")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_4gqnt")
+theme_override_styles/focus = SubResource("StyleBoxTexture_4gqnt")
+text = "CONTINUE"
