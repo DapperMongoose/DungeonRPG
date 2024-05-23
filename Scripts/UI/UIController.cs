@@ -1,0 +1,18 @@
+using Godot;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+public partial class UIController : Control {
+    private Dictionary<ContainerType, UIContainer> _containers;
+
+    public override void _Ready() {
+        _containers = GetChildren().Where(
+            (element) => element is UIContainer
+            ).Cast<UIContainer>().ToDictionary(
+            (element) => element.Container
+            );
+
+        _containers[ContainerType.Start].Visible = true;
+    }
+}
