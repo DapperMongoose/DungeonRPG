@@ -3,16 +3,16 @@ using System;
 
 public partial class StateMachine : Node {
     [Export] private Node _currentState;
-    [Export] private Node[] _states;
+    [Export] private CharacterState[] _states;
 
     public override void _Ready() {
         _currentState.Notification(GameConstants.NotificationEnterState);
     }
 
     public void SwitchState<T>() {
-        Node newState = null;
+        CharacterState newState = null;
 
-        foreach (Node state in _states) {
+        foreach (CharacterState state in _states) {
             if (state is T) {
                 newState = state;
                 break;
@@ -24,6 +24,10 @@ public partial class StateMachine : Node {
         }
 
         if (_currentState is T) {
+            return;
+        }
+
+        if (!newState.CanTransition()) {
             return;
         }
 
