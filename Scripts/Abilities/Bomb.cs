@@ -1,17 +1,14 @@
 using Godot;
 using System;
 
-public partial class Bomb : Node3D {
-    [Export] private AnimationPlayer _playerNode;
-    [Export] public float Damage{ get; private set; } = 10;
-
+public partial class Bomb : Ability {
     public override void _Ready() {
-        _playerNode.AnimationFinished += HandleExpandAnimationFinished;
+        PlayerNode.AnimationFinished += HandleExpandAnimationFinished;
     }
 
     private void HandleExpandAnimationFinished(StringName animName) {
         if (animName == GameConstants.AnimExpand) {
-            _playerNode.Play(GameConstants.AnimExplosion);
+            PlayerNode.Play(GameConstants.AnimExplosion);
         } else {
             QueueFree();
         }
