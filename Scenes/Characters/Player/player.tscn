@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=3 uid="uid://tnlnp8b3ivkx"]
+[gd_scene load_steps=99 format=3 uid="uid://tnlnp8b3ivkx"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player/Player.cs" id="1_36h63"]
 [ext_resource type="Texture2D" uid="uid://blxwbjuhg61sp" path="res://Assets/Sprites/Characters/Player/Running/Running_007.png" id="1_m1n4l"]
@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://c7lt4l3oummsg" path="res://Resources/player_strength_stat.tres" id="3_30fb6"]
 [ext_resource type="Texture2D" uid="uid://dorf7tecpe32f" path="res://Assets/Sprites/Characters/Player/Idle Blinking/Idle Blinking_001.png" id="3_da5al"]
 [ext_resource type="Texture2D" uid="uid://djm4ujgrjpise" path="res://Assets/Sprites/Characters/Player/Idle Blinking/Idle Blinking_003.png" id="4_ox86l"]
+[ext_resource type="Shader" path="res://Shaders/character_hurt.gdshader" id="4_yr3af"]
 [ext_resource type="Texture2D" uid="uid://dmyhlwmflp5i" path="res://Assets/Sprites/Characters/Player/Idle Blinking/Idle Blinking_004.png" id="5_lfkc0"]
 [ext_resource type="Texture2D" uid="uid://dfc4g08x3xape" path="res://Assets/Sprites/Characters/Player/Idle Blinking/Idle Blinking_005.png" id="6_uu5ic"]
 [ext_resource type="Texture2D" uid="uid://ci54ubefurn8c" path="res://Assets/Sprites/Characters/Player/Idle Blinking/Idle Blinking_006.png" id="7_r3s5w"]
@@ -86,6 +87,13 @@
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerDeathState.cs" id="82_hcgyq"]
 [ext_resource type="PackedScene" uid="uid://b8yfmphphfb1h" path="res://Scenes/Abilities/lightning.tscn" id="84_heuhe"]
 [ext_resource type="Script" path="res://Scripts/Characters/AttackHitbox.cs" id="85_i720l"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2nxc8"]
+render_priority = 1
+shader = ExtResource("4_yr3af")
+shader_parameter/active = false
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/tex = ExtResource("1_w1ydv")
 
 [sub_resource type="Animation" id="Animation_gkqy5"]
 resource_name = "Attack1"
@@ -263,6 +271,7 @@ HitBoxNode = NodePath("Hitbox")
 HitBoxShapeNode = NodePath("Hitbox/CollisionShape3D")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
+material_overlay = SubResource("ShaderMaterial_2nxc8")
 pixel_size = 0.0025
 texture_filter = 0
 texture = ExtResource("1_w1ydv")
