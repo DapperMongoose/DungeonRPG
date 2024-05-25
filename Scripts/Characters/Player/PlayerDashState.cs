@@ -4,6 +4,7 @@ using System;
 public partial class PlayerDashState : PlayerState {
     [Export] private Timer _dashTimerNode;
     [Export(PropertyHint.Range, "0,20,0.1")] private float _speed = 10;
+    [Export] private PackedScene _bombScene;
 
     public override void _Ready() {
         base._Ready();
@@ -31,5 +32,9 @@ public partial class PlayerDashState : PlayerState {
         
         CharacterNode.Velocity *= _speed;
         _dashTimerNode.Start();
+
+        Node3D bomb = _bombScene.Instantiate<Node3D>();
+        GetTree().CurrentScene.AddChild(bomb);
+        bomb.GlobalPosition = CharacterNode.GlobalPosition;
     }
 }
