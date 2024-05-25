@@ -122,6 +122,7 @@ StatType = 1
 StatValue = 4.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_apkjm"]
+resource_local_to_scene = true
 render_priority = 1
 shader = ExtResource("3_88ij6")
 shader_parameter/active = false
@@ -258,7 +259,7 @@ radius = 1.15
 [sub_resource type="BoxShape3D" id="BoxShape3D_adlrb"]
 size = Vector3(0.5, 0.5, 0.5)
 
-[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("AnimPlayerNode", "SpriteNode", "StateMachineNode", "HurtBoxNode", "HitBoxNode", "HitBoxShapeNode", "AgentNode", "ChaseAreaNode", "AttackAreaNode")]
+[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("AnimPlayerNode", "SpriteNode", "StateMachineNode", "HurtBoxNode", "HitBoxNode", "HitBoxShapeNode", "HurtFlashTimerNode", "AgentNode", "ChaseAreaNode", "AttackAreaNode")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00650024, 0, 0)
 collision_layer = 4
 collision_mask = 3
@@ -270,6 +271,7 @@ StateMachineNode = NodePath("StateMachine")
 HurtBoxNode = NodePath("Hurtbox")
 HitBoxNode = NodePath("Hitbox")
 HitBoxShapeNode = NodePath("Hitbox/CollisionShape3D")
+HurtFlashTimerNode = NodePath("HurtFlashTimer")
 AgentNode = NodePath("NavigationAgent3D")
 ChaseAreaNode = NodePath("ChaseArea")
 AttackAreaNode = NodePath("AttackArea")
@@ -352,3 +354,6 @@ script = ExtResource("109_eiiqw")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 shape = SubResource("BoxShape3D_adlrb")
 disabled = true
+
+[node name="HurtFlashTimer" type="Timer" parent="."]
+wait_time = 0.25
